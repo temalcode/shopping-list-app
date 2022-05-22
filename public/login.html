@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href=".\bootstrap-5.2.0-beta1-dist\bootstrap-5.2.0-beta1-dist\css\bootstrap.min.css">
+    <title>Login | Shopping List App</title>
+</head>
+
+<body class="bg-light">
+
+    <div class="p-5">
+        <div class="row">
+            <div class="col">
+                <img src=".\assests\undraw_login_re_4vu2.svg" alt="" class="img-fluid" width="90%">
+            </div>
+            <div class="col">
+                <h1 class="mb-5">Login</h1>
+                <form action="/users/login" method="post" class="w-75 mb-4">
+                    <input type="text" placeholder="Username" name="username" class="form-control" required> <br>
+                    <input type="password" placeholder="Password" name="password" class="form-control" required> <br>
+                    <div>
+                        <input type="submit" value="Login" class="btn btn-primary">
+                        <a href="/" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+                <p>Don't have an account ? <a href="/users/signup">Signup</a>.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

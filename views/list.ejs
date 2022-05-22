@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href=".\bootstrap-5.2.0-beta1-dist\bootstrap-5.2.0-beta1-dist\css\bootstrap.min.css">
+    <title>Shopping List App</title>
+</head>
+<body class="bg-light">
+    
+    <div class="p-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-4"> 🛒 Welcome <%= ' ' +  name %>  </h1>
+            <div>
+                <form action="/users/logout?_method=DELETE" method="post">
+                    <input type="submit" class="btn btn-danger" value="Logout">
+                </form>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <form action="/lists/create" method="post">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <input type="text" placeholder="Item Name" name="item" class="form-control" required> 
+                </div>
+                <div class="col-auto">
+                    <input type="text" placeholder="Quantity" name="quantity" class="form-control"> 
+                </div>
+                <div class="col-auto">
+                    <select name="unit" class="form-select" >
+                        <option value="Kg">Kg</option>
+                        <option value="mg">mg</option>
+                        <option value="L">L</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </div>
+              </div>
+            </form>
+        </div>
+        
+        <div class="row">        
+        <div class="col-md-8">
+            <% if (list.length == 0) { %>
+                <p>Currently you don't have any items</p>
+            <% } else{ %>
+                <% list.forEach((list) => { %>
+                    <div class="bg-success text-light py-2 mb-3 row rounded w-75">
+                            <h3 class="col-md-9"> <%= list.item + ' '%> <span> (<%= list.quantity + ' '  + list.unit %>) </span></h3>
+                            <div class="col">
+                                <form action="lists/delete/<%= list._id %>?_method=DELETE" method="post">
+                                    <input class="btn btn-warning" type="submit" value="Delete">
+                                </form>
+                            </div>
+                    </div>
+                <% }) %> 
+            <% } %>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">How to use</h5>
+                <div class="card-body">
+                  <h5 class="card-title">Add an item</h5>
+                  <p class="card-text">Use the form on top to add an item. After clicking "Add", it will appear on the list.</p>
+                  <h5 class="card-title">Romove an item</h5>
+                  <p class="card-text">Click the yellow delete button next to item name.</p>
+                  <h5 class="card-title">Logout</h5>
+                  <p class="card-text">Once you done, you can logout by clicking red "logout" button at the top.</p>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+        
+</body>
+</html>
